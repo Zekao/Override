@@ -5,8 +5,7 @@
 #include <unistd.h>
 
 
-int
-auth(char *username, unsigned int serial){
+int auth(char *username, unsigned int serial){
 	int i, len;
 	unsigned int chk;
 
@@ -27,13 +26,14 @@ auth(char *username, unsigned int serial){
 	}
 
 	chk = (username[3] ^ 0x1337) + 0x5EEDED;
+	printf("chk value: %d\n serial value: %d\n", chk, serial);
 	for(i=0; i<len; i++) {
 		if (username[i] < 32 || username[i] > 127) {
 			return 1;
 		}
 		chk += (username[i] ^ chk) % 1337;
 	}
-
+	printf("chk value: %d\n serial value: %d\n", chk, serial);
 	if (serial != chk) {
 		return 1;
 	}
