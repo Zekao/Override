@@ -2,7 +2,7 @@
 
 For this level, we have a program that is telling us `Give me some shellcode, k` and we can see that it create a child process and that we can make segfault the child process. 
 
-With [gdb](gdbwriteup.md), we found that the buffer is at 156, so we will have to inject our shellcode after that.
+With [gdb](Ressources/gdbwriteup.md), we found that the buffer is at 156, so we will have to inject our shellcode after that.
 
 ```bash
 python -c 'print("\x90" + "SHELLCODE ADDRESS") | ./level04'

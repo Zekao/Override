@@ -1,6 +1,6 @@
 # level05
 
-On the [gdb writeup](gdbwriteup.md), we found that there is an exit at the end of the program and that we're writing on the 10th stack argument
+On the [gdb writeup](Ressources/gdbwriteup.md), we found that there is an exit at the end of the program and that we're writing on the 10th stack argument
 
 So we will try to override the exit function with the address of the function that we want to execute, which is our shellcode
 

@@ -33,4 +33,4 @@ We can see that the function `secret_backdoor` is calling `system`
 
 So we will enter the address of the function `secret_backdoor` after our segfault and see what happend
 
-[Go back](readme.md)
+[Go back](../writeup.md)

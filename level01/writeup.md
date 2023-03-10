@@ -2,7 +2,7 @@
 
 In this level, we have a binary that asks for a username and a password. If we give it the correct username and password, technically it should open a shell for us. However, it doesn't, even if we give it the correct username and password.
 
-To find the username and password, see the [gdb writeup](gdbwriteup.md).
+To find the username and password, see the [gdb writeup](Ressources/gdbwriteup.md).
 
 We can see that the program is segfaulting if we enter a password that is too long, we will define the offset with [wiremask](https://wiremask.eu/tools/buffer-overflow-pattern-generator/).
 

@@ -10,7 +10,7 @@ We have an info
 
 While checking the binary with ghidra, we can see a that we can't store any multiple of 3
 
-We will find the buffer size, explains have been made in [gdb writeup](gdbwriteup.md)
+We will find the buffer size, explains have been made in [gdb writeup](Ressources/gdbwriteup.md)
 
 At the end of the buffer, we will store the 3 different addresses of system, exit and /bin/sh
 
