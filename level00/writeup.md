@@ -2,7 +2,7 @@
 
 In this level, we are given a binary that asks for a password. If we give it the correct password, it will print the flag.
 
-To find the password, see the [gdb writeup](gdbwriteup.md).
+To find the password, see the [gdb writeup](Ressources/gdbwriteup.md).
 
 ```bash
 level00@OverRide:~$ ./level00 
